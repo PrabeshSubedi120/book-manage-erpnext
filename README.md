@@ -1,40 +1,51 @@
-### Book Management Site
+# 📚 ERPNext Book Management System
 
-Custom Book Management
+This is a custom ERPNext application built as part of an internship assessment. It allows managing books and their submissions, along with a server-side utility to detect overdue users.
 
-### Installation
+---
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+## 🚀 Features
+
+- 📘 Book Doctype: Title, Author, Submission Deadline, Status
+- ✅ Book Submission Doctype: Linked to Book and User
+- 🔍 Server-side script to list overdue users
+- 📦 Custom ERPNext app using Frappe Framework
+
+---
+
+## 🛠️ How It Works
+
+- Built using ERPNext v14+ and Frappe Framework
+- Uses Custom App `book_manage`
+- Server script callable via custom button in Book form:
+    - **"Check Overdue Users"** button checks who missed their submission deadline
+
+---
+
+## 📂 Doctypes Created
+
+### `Book`
+- Title (Data)
+- Author (Data)
+- Submission Deadline (Date)
+- Status (Select: Available/Issued/Overdue)
+
+### `Book Submission`
+- User (Link to User)
+- Book (Link to Book)
+- Submission Date (Date)
+- Status (Select: Submitted/Not Submitted)
+
+---
+
+## ⚙️ Setup Instructions
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app book_manage
-```
+# Clone repository
+git clone https://github.com/PrabeshSubedi120/book-manage-erpnext.git
 
-### Contributing
+# Change directory
+cd Book_Management_system
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
-
-```bash
-cd apps/book_manage
-pre-commit install
-```
-
-Pre-commit is configured to use the following tools for checking and formatting your code:
-
-- ruff
-- eslint
-- prettier
-- pyupgrade
-### CI
-
-This app can use GitHub Actions for CI. The following workflows are configured:
-
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-
-### License
-
-mit
+# Install app
+bench --site [yoursite] install-app book_manage
